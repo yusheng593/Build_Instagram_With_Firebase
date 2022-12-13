@@ -13,9 +13,10 @@
 		C6E8564829476A3900D1C3ED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6E8564629476A3900D1C3ED /* Main.storyboard */; };
 		C6E8564A29476A3B00D1C3ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6E8564929476A3B00D1C3ED /* Assets.xcassets */; };
 		C6E8564D29476A3B00D1C3ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6E8564B29476A3B00D1C3ED /* LaunchScreen.storyboard */; };
-		C6E8565829476A3C00D1C3ED /* Build_Instagram_With_FirebaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E8565729476A3C00D1C3ED /* Build_Instagram_With_FirebaseTests.swift */; };
-		C6E8566229476A3C00D1C3ED /* Build_Instagram_With_FirebaseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E8566129476A3C00D1C3ED /* Build_Instagram_With_FirebaseUITests.swift */; };
 		C6E8566429476A3C00D1C3ED /* Build_Instagram_With_FirebaseUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E8566329476A3C00D1C3ED /* Build_Instagram_With_FirebaseUITestsLaunchTests.swift */; };
+		F5D43BC2294810E2008BEB99 /* ViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D43BC1294810E2008BEB99 /* ViewControllerTest.swift */; };
+		F5D43BC429481BD1008BEB99 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D43BC329481BD1008BEB99 /* Constants.swift */; };
+		F5D43BC629481F3C008BEB99 /* SignUpFlowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D43BC529481F3C008BEB99 /* SignUpFlowTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,10 +46,11 @@
 		C6E8564C29476A3B00D1C3ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C6E8564E29476A3B00D1C3ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C6E8565329476A3C00D1C3ED /* Build_Instagram_With_FirebaseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Build_Instagram_With_FirebaseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C6E8565729476A3C00D1C3ED /* Build_Instagram_With_FirebaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Build_Instagram_With_FirebaseTests.swift; sourceTree = "<group>"; };
 		C6E8565D29476A3C00D1C3ED /* Build_Instagram_With_FirebaseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Build_Instagram_With_FirebaseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C6E8566129476A3C00D1C3ED /* Build_Instagram_With_FirebaseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Build_Instagram_With_FirebaseUITests.swift; sourceTree = "<group>"; };
 		C6E8566329476A3C00D1C3ED /* Build_Instagram_With_FirebaseUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Build_Instagram_With_FirebaseUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		F5D43BC1294810E2008BEB99 /* ViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTest.swift; sourceTree = "<group>"; };
+		F5D43BC329481BD1008BEB99 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		F5D43BC529481F3C008BEB99 /* SignUpFlowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpFlowTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				C6E8564929476A3B00D1C3ED /* Assets.xcassets */,
 				C6E8564B29476A3B00D1C3ED /* LaunchScreen.storyboard */,
 				C6E8564E29476A3B00D1C3ED /* Info.plist */,
+				F5D43BC329481BD1008BEB99 /* Constants.swift */,
 			);
 			path = Build_Instagram_With_Firebase;
 			sourceTree = "<group>";
@@ -113,7 +116,7 @@
 		C6E8565629476A3C00D1C3ED /* Build_Instagram_With_FirebaseTests */ = {
 			isa = PBXGroup;
 			children = (
-				C6E8565729476A3C00D1C3ED /* Build_Instagram_With_FirebaseTests.swift */,
+				F5D43BC029481087008BEB99 /* Controllers */,
 			);
 			path = Build_Instagram_With_FirebaseTests;
 			sourceTree = "<group>";
@@ -121,10 +124,18 @@
 		C6E8566029476A3C00D1C3ED /* Build_Instagram_With_FirebaseUITests */ = {
 			isa = PBXGroup;
 			children = (
-				C6E8566129476A3C00D1C3ED /* Build_Instagram_With_FirebaseUITests.swift */,
 				C6E8566329476A3C00D1C3ED /* Build_Instagram_With_FirebaseUITestsLaunchTests.swift */,
+				F5D43BC529481F3C008BEB99 /* SignUpFlowTests.swift */,
 			);
 			path = Build_Instagram_With_FirebaseUITests;
+			sourceTree = "<group>";
+		};
+		F5D43BC029481087008BEB99 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F5D43BC1294810E2008BEB99 /* ViewControllerTest.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,6 +272,7 @@
 				C6E8564529476A3900D1C3ED /* ViewController.swift in Sources */,
 				C6E8564129476A3900D1C3ED /* AppDelegate.swift in Sources */,
 				C6E8564329476A3900D1C3ED /* SceneDelegate.swift in Sources */,
+				F5D43BC429481BD1008BEB99 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,7 +280,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C6E8565829476A3C00D1C3ED /* Build_Instagram_With_FirebaseTests.swift in Sources */,
+				F5D43BC2294810E2008BEB99 /* ViewControllerTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,8 +288,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C6E8566229476A3C00D1C3ED /* Build_Instagram_With_FirebaseUITests.swift in Sources */,
 				C6E8566429476A3C00D1C3ED /* Build_Instagram_With_FirebaseUITestsLaunchTests.swift in Sources */,
+				F5D43BC629481F3C008BEB99 /* SignUpFlowTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

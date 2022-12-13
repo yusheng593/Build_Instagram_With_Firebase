@@ -11,50 +11,55 @@ class ViewController: UIViewController {
     
     let plusPhotoButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(named: "plus_photo")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        button.setImage(UIImage(named: K.uploadAvatar)?.withRenderingMode(.alwaysOriginal), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.accessibilityIdentifier = TestIdentifier.plusPhotoButton
         return button
     }()
     
     let emailTextField: UITextField = {
         let tf = UITextField()
-        tf.placeholder = "Email"
+        tf.placeholder = K.emailPlaceholder
         tf.translatesAutoresizingMaskIntoConstraints = false
         tf.backgroundColor = UIColor(white: 0, alpha: 0.03)
         tf.borderStyle = .roundedRect
         tf.font = UIFont.systemFont(ofSize: 14)
+        tf.accessibilityIdentifier = TestIdentifier.emailTextField
         return tf
     }()
     
     let usernameTextField: UITextField = {
         let tf = UITextField()
-        tf.placeholder = "Username"
+        tf.placeholder = K.usernamePlaceholder
         tf.translatesAutoresizingMaskIntoConstraints = false
         tf.backgroundColor = UIColor(white: 0, alpha: 0.03)
         tf.borderStyle = .roundedRect
         tf.font = UIFont.systemFont(ofSize: 14)
+        tf.accessibilityIdentifier = TestIdentifier.usernameTextField
         return tf
     }()
     
     let passwordTextField: UITextField = {
         let tf = UITextField()
-        tf.placeholder = "Password"
+        tf.placeholder = K.passwordPlaceholder
         tf.isSecureTextEntry = true
         tf.translatesAutoresizingMaskIntoConstraints = false
         tf.backgroundColor = UIColor(white: 0, alpha: 0.03)
         tf.borderStyle = .roundedRect
         tf.font = UIFont.systemFont(ofSize: 14)
+        tf.accessibilityIdentifier = TestIdentifier.passwordTextField
         return tf
     }()
     
     let signUpButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Sign Up", for: .normal)
+        button.setTitle(K.signButtonTitle, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = UIColor(red: 149/255, green: 204/255, blue: 244/255, alpha: 1)
         button.layer.cornerRadius = 5
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         button.setTitleColor(.white, for: .normal)
+        button.accessibilityIdentifier = TestIdentifier.signUpButton
         return button
     }()
     
@@ -72,11 +77,6 @@ class ViewController: UIViewController {
     }
     
     fileprivate func setupInputFields() {
-        let greenView = UIView()
-        greenView.backgroundColor = .green
-        
-        let redView = UIView()
-        redView.backgroundColor = .red
         
         let stackView = UIStackView(arrangedSubviews: [
             emailTextField,
