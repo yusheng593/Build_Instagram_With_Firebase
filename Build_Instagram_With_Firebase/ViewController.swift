@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ViewController: UIViewController {
     
@@ -16,27 +17,31 @@ class ViewController: UIViewController {
         return button
     }()
     
-    let emailTextField: UITextField = {
+    lazy var emailTextField: UITextField = {
         let tf = UITextField()
         tf.placeholder = K.emailPlaceholder
         tf.backgroundColor = UIColor(white: 0, alpha: 0.03)
         tf.borderStyle = .roundedRect
         tf.font = UIFont.systemFont(ofSize: 14)
         tf.accessibilityIdentifier = TestIdentifier.emailTextField
+        
+        tf.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
         return tf
     }()
     
-    let usernameTextField: UITextField = {
+    lazy var usernameTextField: UITextField = {
         let tf = UITextField()
         tf.placeholder = K.usernamePlaceholder
         tf.backgroundColor = UIColor(white: 0, alpha: 0.03)
         tf.borderStyle = .roundedRect
         tf.font = UIFont.systemFont(ofSize: 14)
         tf.accessibilityIdentifier = TestIdentifier.usernameTextField
+        
+        tf.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
         return tf
     }()
     
-    let passwordTextField: UITextField = {
+    lazy var passwordTextField: UITextField = {
         let tf = UITextField()
         tf.placeholder = K.passwordPlaceholder
         tf.isSecureTextEntry = true
@@ -44,10 +49,12 @@ class ViewController: UIViewController {
         tf.borderStyle = .roundedRect
         tf.font = UIFont.systemFont(ofSize: 14)
         tf.accessibilityIdentifier = TestIdentifier.passwordTextField
+        
+        tf.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
         return tf
     }()
     
-    let signUpButton: UIButton = {
+    lazy var signUpButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle(K.signButtonTitle, for: .normal)
         button.backgroundColor = UIColor.rgb(red: 149, green: 204, blue: 244)
@@ -55,8 +62,46 @@ class ViewController: UIViewController {
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         button.setTitleColor(.white, for: .normal)
         button.accessibilityIdentifier = TestIdentifier.signUpButton
+        button.isEnabled = false
+        
+        button.addTarget(self, action: #selector(handleSignUp), for: .touchUpInside)
         return button
     }()
+    //MARK: - 註冊
+    @objc func handleSignUp() {
+        guard let email = emailTextField.text, !email.isEmpty else { return }
+        guard let username = usernameTextField.text, !username.isEmpty else { return }
+        guard let password = passwordTextField.text, !password.isEmpty else { return }
+        
+        self.signUpButton.isEnabled = false
+        self.signUpButton.backgroundColor = UIColor.rgb(red: 149, green: 204, blue: 244)
+        
+        Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+            
+            guard let user = authResult?.user, error == nil else {
+                print(error?.localizedDescription ?? "註冊失敗")
+                self.signUpButton.isEnabled = false
+                return
+            }
+            
+            print("\(user.email ?? "user") 註冊成功")
+            
+        }
+    }
+    //MARK: - 檢查輸入
+    @objc func handleTextInputChange() {
+        let isFormValid = emailTextField.text?.isEmpty != true &&
+        usernameTextField.text?.isEmpty != true &&
+        passwordTextField.text?.isEmpty != true
+        
+        if isFormValid {
+            signUpButton.isEnabled = true
+            signUpButton.backgroundColor = UIColor.rgb(red: 17, green: 154, blue: 237)
+        } else {
+            signUpButton.isEnabled = false
+            signUpButton.backgroundColor = UIColor.rgb(red: 149, green: 204, blue: 244)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
