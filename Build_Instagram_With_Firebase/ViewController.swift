@@ -7,13 +7,16 @@
 
 import UIKit
 import Firebase
+import FirebaseStorage
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
     
-    let plusPhotoButton: UIButton = {
+    lazy var plusPhotoButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: K.uploadAvatar)?.withRenderingMode(.alwaysOriginal), for: .normal)
         button.accessibilityIdentifier = TestIdentifier.plusPhotoButton
+        
+        button.addTarget(self, action: #selector(handlePlusPhoto), for: .touchUpInside)
         return button
     }()
     
@@ -84,9 +87,52 @@ class ViewController: UIViewController {
                 return
             }
             
-            print("\(user.email ?? "user") 註冊成功")
+            print("\(user.uid) 註冊成功")
+            
+            guard let image = self.plusPhotoButton.imageView?.image else { return }
+            guard let uploadData = image.jpegData(compressionQuality: 0.3) else { return }
+            let filename = NSUUID().uuidString
+            let storage = Storage.storage()
+            let storageRef = storage.reference()
+            storageRef.child("profile_images").child(filename).putData(uploadData) { metadata, error in
+                
+                if let error = error {
+                    print(error.localizedDescription)
+                }
+                
+                let ref = storageRef.child("profile_images").child(filename)
+                ref.downloadURL { url, error in
+                    if let error = error {
+                        print(error.localizedDescription)
+                    }
+                    guard let ProfileImageUrl = url else { return }
+                    print(ProfileImageUrl)
+                    
+                }
+            }
+            
+            
+//            let dictionaryValues = ["username": username, "ProfileImageUrl": ProfileImageUrl]
+//            let values = [user.uid: dictionaryValues]
+            
+            let usernameValues = ["username": username]
+            let values = [user.uid: usernameValues]
+            
+            var ref: DatabaseReference!
+            
+            ref = Database.database().reference()
+            
+            ref.child("user").updateChildValues(values) { error, reference in
+                if let error = error {
+                    print(error.localizedDescription )
+                    return
+                }
+                
+                print("\(username) 儲存成功")
+            }
             
         }
+        
     }
     //MARK: - 檢查輸入
     @objc func handleTextInputChange() {
@@ -101,6 +147,28 @@ class ViewController: UIViewController {
             signUpButton.isEnabled = false
             signUpButton.backgroundColor = UIColor.rgb(red: 149, green: 204, blue: 244)
         }
+    }
+    //MARK: - 新增頭貼
+    @objc func handlePlusPhoto() {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        imagePickerController.allowsEditing = true
+        present(imagePickerController, animated: true)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            plusPhotoButton.setImage(editedImage.withRenderingMode(.alwaysOriginal), for: .normal)
+        } else if let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            plusPhotoButton.setImage(originalImage.withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        
+        plusPhotoButton.layer.cornerRadius = plusPhotoButton.frame.width / 2
+        plusPhotoButton.layer.masksToBounds = true
+        plusPhotoButton.layer.borderColor = UIColor.label.cgColor
+        plusPhotoButton.layer.borderWidth = 2
+        
+        dismiss(animated: true)
     }
     
     override func viewDidLoad() {
