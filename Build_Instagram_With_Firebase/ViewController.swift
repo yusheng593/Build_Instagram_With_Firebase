@@ -178,7 +178,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
         
         setupInputFields()
         
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
     }
     
     fileprivate func setupInputFields() {
