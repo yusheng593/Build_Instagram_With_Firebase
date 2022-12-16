@@ -20,6 +20,8 @@
 		C6E8564A29476A3B00D1C3ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6E8564929476A3B00D1C3ED /* Assets.xcassets */; };
 		C6E8564D29476A3B00D1C3ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6E8564B29476A3B00D1C3ED /* LaunchScreen.storyboard */; };
 		C6E8566429476A3C00D1C3ED /* Build_Instagram_With_FirebaseUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E8566329476A3C00D1C3ED /* Build_Instagram_With_FirebaseUITestsLaunchTests.swift */; };
+		F5D19293294C2107002BD936 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D19292294C2107002BD936 /* MainTabBarController.swift */; };
+		F5D19295294C60D1002BD936 /* UserProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D19294294C60D1002BD936 /* UserProfileController.swift */; };
 		F5D43BC2294810E2008BEB99 /* ViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D43BC1294810E2008BEB99 /* ViewControllerTest.swift */; };
 		F5D43BC429481BD1008BEB99 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D43BC329481BD1008BEB99 /* Constants.swift */; };
 		F5D43BC629481F3C008BEB99 /* SignUpFlowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D43BC529481F3C008BEB99 /* SignUpFlowTests.swift */; };
@@ -56,6 +58,8 @@
 		C6E8565329476A3C00D1C3ED /* Build_Instagram_With_FirebaseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Build_Instagram_With_FirebaseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6E8565D29476A3C00D1C3ED /* Build_Instagram_With_FirebaseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Build_Instagram_With_FirebaseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6E8566329476A3C00D1C3ED /* Build_Instagram_With_FirebaseUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Build_Instagram_With_FirebaseUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		F5D19292294C2107002BD936 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		F5D19294294C60D1002BD936 /* UserProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileController.swift; sourceTree = "<group>"; };
 		F5D43BC1294810E2008BEB99 /* ViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTest.swift; sourceTree = "<group>"; };
 		F5D43BC329481BD1008BEB99 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		F5D43BC529481F3C008BEB99 /* SignUpFlowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpFlowTests.swift; sourceTree = "<group>"; };
@@ -124,6 +128,8 @@
 				C63331692948B22600C71371 /* Utils */,
 				C6E8564029476A3900D1C3ED /* AppDelegate.swift */,
 				C6E8564229476A3900D1C3ED /* SceneDelegate.swift */,
+				F5D19292294C2107002BD936 /* MainTabBarController.swift */,
+				F5D19294294C60D1002BD936 /* UserProfileController.swift */,
 				C6E8564429476A3900D1C3ED /* ViewController.swift */,
 				C6E8564629476A3900D1C3ED /* Main.storyboard */,
 				C6E8564929476A3B00D1C3ED /* Assets.xcassets */,
@@ -303,7 +309,9 @@
 			files = (
 				C633316B2948B24A00C71371 /* Extensions.swift in Sources */,
 				C6E8564529476A3900D1C3ED /* ViewController.swift in Sources */,
+				F5D19293294C2107002BD936 /* MainTabBarController.swift in Sources */,
 				C6E8564129476A3900D1C3ED /* AppDelegate.swift in Sources */,
+				F5D19295294C60D1002BD936 /* UserProfileController.swift in Sources */,
 				C6E8564329476A3900D1C3ED /* SceneDelegate.swift in Sources */,
 				F5D43BC429481BD1008BEB99 /* Constants.swift in Sources */,
 			);
