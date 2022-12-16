@@ -72,6 +72,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
     }()
     //MARK: - 註冊
     @objc func handleSignUp() {
+        // 1.註冊使用者
         guard let email = emailTextField.text, !email.isEmpty else { return }
         guard let username = usernameTextField.text, !username.isEmpty else { return }
         guard let password = passwordTextField.text, !password.isEmpty else { return }
@@ -86,9 +87,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
                 self.signUpButton.isEnabled = false
                 return
             }
-            
             print("\(user.uid) 註冊成功")
-            
+            // 2.上傳使用者頭貼
             guard let image = self.plusPhotoButton.imageView?.image else { return }
             guard let uploadData = image.jpegData(compressionQuality: 0.3) else { return }
             let filename = NSUUID().uuidString
@@ -99,37 +99,33 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
                 if let error = error {
                     print(error.localizedDescription)
                 }
-                
+                // 3.取得頭貼連結
                 let ref = storageRef.child("profile_images").child(filename)
-                ref.downloadURL { url, error in
+                ref.downloadURL { downloadURL, error in
                     if let error = error {
                         print(error.localizedDescription)
                     }
-                    guard let ProfileImageUrl = url else { return }
+                    guard let ProfileImageUrl = downloadURL?.absoluteString else { return }
                     print(ProfileImageUrl)
+                    // 4.儲存使用者名稱與頭貼連結
+                    let dictionaryValues = ["username": username, "ProfileImageUrl": ProfileImageUrl]
+                    let values = [user.uid: dictionaryValues]
+                    
+                    var ref: DatabaseReference!
+                    ref = Database.database().reference()
+                    
+                    ref.child("user").updateChildValues(values) { error, reference in
+                        if let error = error {
+                            print(error.localizedDescription )
+                            return
+                        }
+                        
+                        print("\(username) 儲存成功")
+                    }
                     
                 }
             }
             
-            
-//            let dictionaryValues = ["username": username, "ProfileImageUrl": ProfileImageUrl]
-//            let values = [user.uid: dictionaryValues]
-            
-            let usernameValues = ["username": username]
-            let values = [user.uid: usernameValues]
-            
-            var ref: DatabaseReference!
-            
-            ref = Database.database().reference()
-            
-            ref.child("user").updateChildValues(values) { error, reference in
-                if let error = error {
-                    print(error.localizedDescription )
-                    return
-                }
-                
-                print("\(username) 儲存成功")
-            }
             
         }
         
@@ -148,7 +144,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
             signUpButton.backgroundColor = UIColor.rgb(red: 149, green: 204, blue: 244)
         }
     }
-    //MARK: - 新增頭貼
+    //MARK: - 取得本機照片
     @objc func handlePlusPhoto() {
         let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
