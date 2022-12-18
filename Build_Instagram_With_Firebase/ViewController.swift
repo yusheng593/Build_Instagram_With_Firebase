@@ -166,7 +166,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
         
         dismiss(animated: true)
     }
-    
+    //MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
