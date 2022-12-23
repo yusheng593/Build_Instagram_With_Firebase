@@ -10,30 +10,38 @@ import Firebase
 
 class UserProfileHeader: UICollectionViewCell {
     
+    var user: User? {
+        didSet {
+            setupProfileImage()
+            self.username.text = user?.username
+        }
+    }
+    
     let profileImageView: UIImageView = {
-        let iv = UIImageView()
-        iv.backgroundColor = .red
-        return iv
+        let imageView = UIImageView()
+        return imageView
+    }()
+    
+    var username: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 16)
+        return label
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = .blue
-        
         addSubview(profileImageView)
-        
         profileImageView.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: nil, paddingTop: 16, paddingLeft: 16, paddingBottom: 0, paddingRight: 0, width: 100, height: 100)
         profileImageView.layer.cornerRadius = 100 / 2
         profileImageView.clipsToBounds = true
         
+        addSubview(username)
+        username.anchor(top: profileImageView.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 8, paddingLeft: 16, paddingBottom: 0, paddingRight: 16, width: 0, height: 0)
+        
     }
     
-    var user: User? {
-        didSet {
-            setupProfileImage()
-        }
-    }
+    
     
     fileprivate func setupProfileImage() {
         guard let profileImageUrl = user?.profileImageUrl else {
