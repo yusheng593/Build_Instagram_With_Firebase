@@ -10,7 +10,7 @@ import XCTest
 
 class ViewControllerTest: XCTestCase {
     
-    var sut: ViewController!
+    var sut: SignUpController!
     var emailTextField: UITextField!
     var usernameTextField: UITextField!
     var passwordTextField: UITextField!
@@ -19,7 +19,7 @@ class ViewControllerTest: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        sut = ViewController()
+        sut = SignUpController()
         sut.loadViewIfNeeded()
         
         emailTextField = sut.emailTextField
