@@ -37,6 +37,11 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
             let firebaseAuth = Auth.auth()
             do {
               try firebaseAuth.signOut()
+                let loginController = LoginController()
+                let navController = UINavigationController(rootViewController: loginController)
+                navController.modalPresentationStyle = .fullScreen
+                self.present(navController, animated: true)
+                
             } catch let signOutError as NSError {
               print("Error signing out: %@", signOutError)
             }

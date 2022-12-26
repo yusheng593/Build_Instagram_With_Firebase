@@ -121,6 +121,12 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate & UINa
                         }
                         
                         print("\(username) 儲存成功")
+                        
+                        guard let mainTabBarController = UIApplication.shared.connectedScenes.compactMap({ ($0 as? UIWindowScene)?.keyWindow }).first?.rootViewController as? MainTabBarController else { return }
+                        
+                        mainTabBarController.setupViewControllers()
+                        
+                        self.dismiss(animated: true)
                     }
                     
                 }

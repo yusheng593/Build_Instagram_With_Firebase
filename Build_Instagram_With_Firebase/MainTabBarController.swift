@@ -14,24 +14,27 @@ class MainTabBarController: UITabBarController {
         
         if Auth.auth().currentUser == nil {
             DispatchQueue.main.async {
-                let loginVC = LoginController()
-                let navController = UINavigationController(rootViewController: loginVC)
+                let loginController = LoginController()
+                let navController = UINavigationController(rootViewController: loginController)
                 navController.modalPresentationStyle = .fullScreen
                 self.present(navController, animated: false)
             }
-        } else {
-            let layout = UICollectionViewFlowLayout()
-            let userProfileController = UserProfileController(collectionViewLayout: layout)
-            let navController = UINavigationController(rootViewController: userProfileController)
-            viewControllers = [navController, UIViewController()]
-            
-            navController.tabBarItem.image = UIImage(named: "profile_unselected")
-            navController.tabBarItem.selectedImage = UIImage(named: "profile_selected")
-            tabBar.tintColor = .label
+            return
         }
         
+        setupViewControllers()
         
+    }
+    
+    func setupViewControllers() {
+        let layout = UICollectionViewFlowLayout()
+        let userProfileController = UserProfileController(collectionViewLayout: layout)
+        let navController = UINavigationController(rootViewController: userProfileController)
+        viewControllers = [navController, UIViewController()]
         
+        navController.tabBarItem.image = UIImage(named: "profile_unselected")
+        navController.tabBarItem.selectedImage = UIImage(named: "profile_selected")
+        tabBar.tintColor = .label
     }
     
 }
