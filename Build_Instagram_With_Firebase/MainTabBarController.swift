@@ -27,14 +27,36 @@ class MainTabBarController: UITabBarController {
     }
     
     func setupViewControllers() {
+        
+        let homeNavController = templateNavController(unselectedImage: "home_unselected", selectedImage: "home_selected")
+        let searchNavController = templateNavController(unselectedImage: "search_unselected", selectedImage: "search_selected")
+        let plusNavController = templateNavController(unselectedImage: "plus_unselected", selectedImage: "plus_unselected")
+        let likeNavController = templateNavController(unselectedImage: "like_unselected", selectedImage: "like_selected")
+        
+        // user profile
         let layout = UICollectionViewFlowLayout()
         let userProfileController = UserProfileController(collectionViewLayout: layout)
-        let navController = UINavigationController(rootViewController: userProfileController)
-        viewControllers = [navController, UIViewController()]
+        let userProfileNavController = UINavigationController(rootViewController: userProfileController)
         
-        navController.tabBarItem.image = UIImage(named: "profile_unselected")
-        navController.tabBarItem.selectedImage = UIImage(named: "profile_selected")
+        userProfileNavController.tabBarItem.image = UIImage(named: "profile_unselected")
+        userProfileNavController.tabBarItem.selectedImage = UIImage(named: "profile_selected")
         tabBar.tintColor = .label
+        
+        viewControllers = [userProfileNavController, homeNavController, searchNavController, plusNavController, likeNavController]
+        
+        //modify tab bar item insets
+        guard let items = tabBar.items else { return }
+        for item in items {
+            item.imageInsets = UIEdgeInsets(top: 4, left: 0, bottom: -4, right: 0)
+        }
+    }
+    
+    fileprivate func templateNavController(unselectedImage: String, selectedImage: String) -> UINavigationController {
+        let viewController = UIViewController()
+        let navController = UINavigationController(rootViewController: viewController)
+        navController.tabBarItem.image = UIImage(named: unselectedImage)
+        navController.tabBarItem.selectedImage = UIImage(named: selectedImage)
+        return navController
     }
     
 }
