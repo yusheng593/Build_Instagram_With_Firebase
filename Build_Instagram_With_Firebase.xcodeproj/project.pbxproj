@@ -22,6 +22,7 @@
 		C6E8564D29476A3B00D1C3ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6E8564B29476A3B00D1C3ED /* LaunchScreen.storyboard */; };
 		C6E8566429476A3C00D1C3ED /* Build_Instagram_With_FirebaseUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E8566329476A3C00D1C3ED /* Build_Instagram_With_FirebaseUITestsLaunchTests.swift */; };
 		F59F1718295973FB0013D3BD /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59F1717295973FB0013D3BD /* LoginController.swift */; };
+		F59F171B295A83BC0013D3BD /* PhotoSelectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59F171A295A83BB0013D3BD /* PhotoSelectorController.swift */; };
 		F5D19293294C2107002BD936 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D19292294C2107002BD936 /* MainTabBarController.swift */; };
 		F5D19295294C60D1002BD936 /* UserProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D19294294C60D1002BD936 /* UserProfileController.swift */; };
 		F5D43BC2294810E2008BEB99 /* ViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D43BC1294810E2008BEB99 /* ViewControllerTest.swift */; };
@@ -62,6 +63,7 @@
 		C6E8565D29476A3C00D1C3ED /* Build_Instagram_With_FirebaseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Build_Instagram_With_FirebaseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6E8566329476A3C00D1C3ED /* Build_Instagram_With_FirebaseUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Build_Instagram_With_FirebaseUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		F59F1717295973FB0013D3BD /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		F59F171A295A83BB0013D3BD /* PhotoSelectorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectorController.swift; sourceTree = "<group>"; };
 		F5D19292294C2107002BD936 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		F5D19294294C60D1002BD936 /* UserProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileController.swift; sourceTree = "<group>"; };
 		F5D43BC1294810E2008BEB99 /* ViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTest.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 		C6E8563F29476A3900D1C3ED /* Build_Instagram_With_Firebase */ = {
 			isa = PBXGroup;
 			children = (
+				F59F1719295A83A60013D3BD /* AddPhoto */,
 				F59F1716295973D40013D3BD /* Login */,
 				C68D5078294F4BBB00245E60 /* UserProfile */,
 				C63331692948B22600C71371 /* Utils */,
@@ -178,6 +181,14 @@
 				C6E8564429476A3900D1C3ED /* SignUpController.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		F59F1719295A83A60013D3BD /* AddPhoto */ = {
+			isa = PBXGroup;
+			children = (
+				F59F171A295A83BB0013D3BD /* PhotoSelectorController.swift */,
+			);
+			path = AddPhoto;
 			sourceTree = "<group>";
 		};
 		F5D43BC029481087008BEB99 /* Controllers */ = {
@@ -338,6 +349,7 @@
 				F5D19295294C60D1002BD936 /* UserProfileController.swift in Sources */,
 				C6E8564329476A3900D1C3ED /* SceneDelegate.swift in Sources */,
 				F5D43BC429481BD1008BEB99 /* Constants.swift in Sources */,
+				F59F171B295A83BC0013D3BD /* PhotoSelectorController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
