@@ -23,6 +23,7 @@
 		C6E8566429476A3C00D1C3ED /* Build_Instagram_With_FirebaseUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E8566329476A3C00D1C3ED /* Build_Instagram_With_FirebaseUITestsLaunchTests.swift */; };
 		F59F1718295973FB0013D3BD /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59F1717295973FB0013D3BD /* LoginController.swift */; };
 		F59F171B295A83BC0013D3BD /* PhotoSelectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59F171A295A83BB0013D3BD /* PhotoSelectorController.swift */; };
+		F59F171D295C46510013D3BD /* PhotoSelectorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59F171C295C46510013D3BD /* PhotoSelectorCell.swift */; };
 		F5D19293294C2107002BD936 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D19292294C2107002BD936 /* MainTabBarController.swift */; };
 		F5D19295294C60D1002BD936 /* UserProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D19294294C60D1002BD936 /* UserProfileController.swift */; };
 		F5D43BC2294810E2008BEB99 /* ViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D43BC1294810E2008BEB99 /* ViewControllerTest.swift */; };
@@ -64,6 +65,7 @@
 		C6E8566329476A3C00D1C3ED /* Build_Instagram_With_FirebaseUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Build_Instagram_With_FirebaseUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		F59F1717295973FB0013D3BD /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		F59F171A295A83BB0013D3BD /* PhotoSelectorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectorController.swift; sourceTree = "<group>"; };
+		F59F171C295C46510013D3BD /* PhotoSelectorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectorCell.swift; sourceTree = "<group>"; };
 		F5D19292294C2107002BD936 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		F5D19294294C60D1002BD936 /* UserProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileController.swift; sourceTree = "<group>"; };
 		F5D43BC1294810E2008BEB99 /* ViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTest.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				F59F171A295A83BB0013D3BD /* PhotoSelectorController.swift */,
+				F59F171C295C46510013D3BD /* PhotoSelectorCell.swift */,
 			);
 			path = AddPhoto;
 			sourceTree = "<group>";
@@ -340,6 +343,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F59F171D295C46510013D3BD /* PhotoSelectorCell.swift in Sources */,
 				C633316B2948B24A00C71371 /* Extensions.swift in Sources */,
 				C6E8564529476A3900D1C3ED /* SignUpController.swift in Sources */,
 				F5D19293294C2107002BD936 /* MainTabBarController.swift in Sources */,
@@ -529,6 +533,7 @@
 				DEVELOPMENT_TEAM = H23U829MKV;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Build_Instagram_With_Firebase/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = BIGWFB;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -558,6 +563,7 @@
 				DEVELOPMENT_TEAM = H23U829MKV;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Build_Instagram_With_Firebase/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = BIGWFB;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
