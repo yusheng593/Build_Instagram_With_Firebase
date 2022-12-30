@@ -28,6 +28,7 @@
 		F59F1721295D1CFC0013D3BD /* SharePhotoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59F1720295D1CFC0013D3BD /* SharePhotoController.swift */; };
 		F59F1724295E91A80013D3BD /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59F1723295E91A80013D3BD /* Post.swift */; };
 		F59F1726295EB8910013D3BD /* UserProfilePhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59F1725295EB8910013D3BD /* UserProfilePhotoCell.swift */; };
+		F59F1728295EE98D0013D3BD /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59F1727295EE98D0013D3BD /* CustomImageView.swift */; };
 		F5D19293294C2107002BD936 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D19292294C2107002BD936 /* MainTabBarController.swift */; };
 		F5D19295294C60D1002BD936 /* UserProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D19294294C60D1002BD936 /* UserProfileController.swift */; };
 		F5D43BC2294810E2008BEB99 /* ViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D43BC1294810E2008BEB99 /* ViewControllerTest.swift */; };
@@ -74,6 +75,7 @@
 		F59F1720295D1CFC0013D3BD /* SharePhotoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePhotoController.swift; sourceTree = "<group>"; };
 		F59F1723295E91A80013D3BD /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		F59F1725295EB8910013D3BD /* UserProfilePhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfilePhotoCell.swift; sourceTree = "<group>"; };
+		F59F1727295EE98D0013D3BD /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 		F5D19292294C2107002BD936 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		F5D19294294C60D1002BD936 /* UserProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileController.swift; sourceTree = "<group>"; };
 		F5D43BC1294810E2008BEB99 /* ViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTest.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				C633316A2948B24A00C71371 /* Extensions.swift */,
+				F59F1727295EE98D0013D3BD /* CustomImageView.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -372,6 +375,7 @@
 				F59F1724295E91A80013D3BD /* Post.swift in Sources */,
 				C68D507A294F4BD200245E60 /* UserProfileHeader.swift in Sources */,
 				F59F1718295973FB0013D3BD /* LoginController.swift in Sources */,
+				F59F1728295EE98D0013D3BD /* CustomImageView.swift in Sources */,
 				C6E8564129476A3900D1C3ED /* AppDelegate.swift in Sources */,
 				F59F1721295D1CFC0013D3BD /* SharePhotoController.swift in Sources */,
 				F5D19295294C60D1002BD936 /* UserProfileController.swift in Sources */,
