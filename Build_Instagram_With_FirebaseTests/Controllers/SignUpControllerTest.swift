@@ -8,7 +8,7 @@
 import XCTest
 @testable import Build_Instagram_With_Firebase
 
-class ViewControllerTest: XCTestCase {
+class SignUpControllerTest: XCTestCase {
     
     var sut: SignUpController!
     var emailTextField: UITextField!
@@ -39,21 +39,21 @@ class ViewControllerTest: XCTestCase {
         signUpButton = nil
     }
 
-    func testViewController_WhenCreated_TextFieldsEmpty() throws {
+    func testSignUpController_WhenCreated_TextFieldsEmpty() throws {
         // Assert
         XCTAssertEqual(emailTextField.text, "", "Email text field was not empty when the view controller initially loaded")
         XCTAssertEqual(usernameTextField.text, "", "Username text field was not empty when the view controller initially loaded")
         XCTAssertEqual(passwordTextField.text, "", "Password text field was not empty when the view controller initially loaded")
     }
     
-    func testViewController_WhenCreated_TextFieldsPlaceholder() throws {
+    func testSignUpController_WhenCreated_TextFieldsPlaceholder() throws {
         // Assert
         XCTAssertEqual(emailTextField.placeholder, K.emailPlaceholder, "Email text field has no placeholder")
         XCTAssertEqual(usernameTextField.placeholder, K.usernamePlaceholder, "Username text field has no placeholder")
         XCTAssertEqual(passwordTextField.placeholder, K.passwordPlaceholder, "Password text field has no placeholder")
     }
     
-    func testViewController_WhenCreated_SignUpButtonTitle() throws {
+    func testSignUpController_WhenCreated_SignUpButtonTitle() throws {
         // Assert
         XCTAssertEqual(signUpButton.currentTitle, K.signButtonTitle, "Wrong title on sign up button")
     }
