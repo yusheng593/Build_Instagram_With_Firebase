@@ -179,6 +179,7 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate & UINa
         let attributedTitle = NSMutableAttributedString(string: "已有帳號嗎？", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14), NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         attributedTitle.append(NSAttributedString(string: "登入", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 14), NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 17, green: 154, blue: 237)]))
         button.setAttributedTitle(attributedTitle, for: .normal)
+        button.accessibilityIdentifier = TestIdentifier.alreadyHaveAccountButton
         
         button.addTarget(self, action: #selector(handleAlreadyHaveAccount), for: .touchUpInside)
         return button

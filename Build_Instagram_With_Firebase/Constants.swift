@@ -24,5 +24,7 @@ struct TestIdentifier {
     static let passwordTextField = "passwordTextField"
     static let signUpButton = "signUpButton"
     static let loginButton = "loginButton"
+    static let alreadyHaveAccountButton = "alreadyHaveAccountButton"
+    static let dontHaveAccountButton = "dontHaveAccountButton"
     
 }

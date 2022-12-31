@@ -13,6 +13,8 @@ final class LoginFlowTests: XCTestCase {
     private var email: XCUIElement!
     private var password: XCUIElement!
     private var loginButton: XCUIElement!
+    private var dontHaveAccountButton: XCUIElement!
+    private var alreadyHaveAccountButton: XCUIElement!
 
     override func setUpWithError() throws {
         try super.setUpWithError()
@@ -23,6 +25,8 @@ final class LoginFlowTests: XCTestCase {
         email = app.textFields["emailTextField"]
         password = app.secureTextFields["passwordTextField"]
         loginButton = app.buttons["loginButton"]
+        dontHaveAccountButton = app.buttons["dontHaveAccountButton"]
+        alreadyHaveAccountButton = app.buttons["alreadyHaveAccountButton"]
         
         continueAfterFailure = false
     }
@@ -32,6 +36,8 @@ final class LoginFlowTests: XCTestCase {
         email = nil
         password = nil
         loginButton = nil
+        dontHaveAccountButton = nil
+        alreadyHaveAccountButton = nil
         
         try super.tearDownWithError()
     }
@@ -40,6 +46,7 @@ final class LoginFlowTests: XCTestCase {
         XCTAssertTrue(email.isEnabled, "Email UITextField is not enabled for user interactions")
         XCTAssertTrue(password.isEnabled, "password UITextField is not enabled for user interactions")
         XCTAssertFalse(loginButton.isEnabled, "sign Up Button is enabled for user interactions")
+        XCTAssertTrue(dontHaveAccountButton.isEnabled, "dontHaveAccountButton is enabled for user interactions")
     }
     
     func testLoginController_WhenValidFormSubmitted_SignUpButtonIsEnabled() {
@@ -51,5 +58,16 @@ final class LoginFlowTests: XCTestCase {
         password.typeText("qaz123")
         // Assert
         XCTAssertTrue(loginButton.isEnabled, "sign Up Button is not enabled for user interactions")
+    }
+    
+    func testLoginController_WhenTapDontHaveAccountButton_ShouldPresentSignUpController_AndTapAlreadyHaveAccountButton_ShouldBackLoginController() {
+        // Act
+        dontHaveAccountButton.tap()
+        // Assert
+        XCTAssertTrue(alreadyHaveAccountButton.waitForExistence(timeout:1), "alreadyHaveAccountButton was not presented when dontHaveAccountButton was tapped")
+        // Act
+        alreadyHaveAccountButton.tap()
+        // Assert
+        XCTAssertTrue(dontHaveAccountButton.waitForExistence(timeout:1), "dontHaveAccountButton was not presented when alreadyHaveAccountButton was tapped")
     }
 }

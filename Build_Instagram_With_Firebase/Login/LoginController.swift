@@ -109,6 +109,7 @@ class LoginController: UIViewController {
         let attributedTitle = NSMutableAttributedString(string: "沒有帳號嗎？", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14), NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         attributedTitle.append(NSAttributedString(string: "註冊", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 14), NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 17, green: 154, blue: 237)]))
         button.setAttributedTitle(attributedTitle, for: .normal)
+        button.accessibilityIdentifier = TestIdentifier.dontHaveAccountButton
         
         button.addTarget(self, action: #selector(handleShowSignUp), for: .touchUpInside)
         return button
