@@ -30,6 +30,7 @@ class LoginController: UIViewController {
         tf.backgroundColor = UIColor(white: 0, alpha: 0.03)
         tf.borderStyle = .roundedRect
         tf.font = UIFont.systemFont(ofSize: 14)
+        tf.accessibilityIdentifier = TestIdentifier.emailTextField
         
         tf.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
         
@@ -43,6 +44,8 @@ class LoginController: UIViewController {
         tf.backgroundColor = UIColor(white: 0, alpha: 0.03)
         tf.borderStyle = .roundedRect
         tf.font = UIFont.systemFont(ofSize: 14)
+        tf.accessibilityIdentifier = TestIdentifier.passwordTextField
+        
         tf.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
         return tf
     }()
@@ -68,6 +71,7 @@ class LoginController: UIViewController {
         button.layer.cornerRadius = 5
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         button.setTitleColor(.white, for: .normal)
+        button.accessibilityIdentifier = TestIdentifier.loginButton
         
         button.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
         
@@ -111,8 +115,8 @@ class LoginController: UIViewController {
     }()
     
     @objc func handleShowSignUp() {
-        let vc = SignUpController()
-        navigationController?.pushViewController(vc, animated: true)
+        let signUpController = SignUpController()
+        navigationController?.pushViewController(signUpController, animated: true)
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {

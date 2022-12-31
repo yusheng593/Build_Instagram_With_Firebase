@@ -31,6 +31,16 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         
         if Auth.auth().currentUser == nil {
             DispatchQueue.main.async {
+                
+                #if DEBUG
+                if ProcessInfo.processInfo.arguments.contains("toTestSignUpController") {
+                    let loginController = SignUpController()
+                    let navController = UINavigationController(rootViewController: loginController)
+                    navController.modalPresentationStyle = .fullScreen
+                    self.present(navController, animated: false)
+                }
+                #endif
+                
                 let loginController = LoginController()
                 let navController = UINavigationController(rootViewController: loginController)
                 navController.modalPresentationStyle = .fullScreen

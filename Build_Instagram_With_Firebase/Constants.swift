@@ -17,11 +17,12 @@ struct K {
 }
 
 struct TestIdentifier {
-    // Sign up page
+    // Sign up and Login page
     static let plusPhotoButton = "plusPhotoButton"
     static let emailTextField = "emailTextField"
     static let usernameTextField = "usernameTextField"
     static let passwordTextField = "passwordTextField"
     static let signUpButton = "signUpButton"
+    static let loginButton = "loginButton"
     
 }
