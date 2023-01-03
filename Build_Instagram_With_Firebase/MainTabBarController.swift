@@ -27,20 +27,31 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        #if DEBUG
+        DispatchQueue.main.async {
+            if ProcessInfo.processInfo.arguments.contains("toTestSignUpController") {
+                let signUpController = SignUpController()
+                let navController = UINavigationController(rootViewController: signUpController)
+                navController.modalPresentationStyle = .fullScreen
+                self.present(navController, animated: false)
+                return
+            }
+            
+            if ProcessInfo.processInfo.arguments.contains("toTestLoginController") {
+                let loginController = LoginController()
+                let navController = UINavigationController(rootViewController: loginController)
+                navController.modalPresentationStyle = .fullScreen
+                self.present(navController, animated: false)
+                return
+            }
+            
+        }
+        #endif
+        
         self.delegate = self
         
         if Auth.auth().currentUser == nil {
             DispatchQueue.main.async {
-                
-                #if DEBUG
-                if ProcessInfo.processInfo.arguments.contains("toTestSignUpController") {
-                    let loginController = SignUpController()
-                    let navController = UINavigationController(rootViewController: loginController)
-                    navController.modalPresentationStyle = .fullScreen
-                    self.present(navController, animated: false)
-                }
-                #endif
-                
                 let loginController = LoginController()
                 let navController = UINavigationController(rootViewController: loginController)
                 navController.modalPresentationStyle = .fullScreen

@@ -20,6 +20,7 @@ final class LoginFlowTests: XCTestCase {
         try super.setUpWithError()
         
         app = XCUIApplication()
+        app.launchArguments = ["toTestLoginController"]
         app.launch()
         
         email = app.textFields["emailTextField"]
