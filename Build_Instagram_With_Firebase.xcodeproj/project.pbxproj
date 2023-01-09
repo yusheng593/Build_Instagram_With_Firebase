@@ -13,6 +13,8 @@
 		C6083C8D294A1FBC00413CAF /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = C6083C8C294A1FBC00413CAF /* FirebaseStorage */; };
 		C633316B2948B24A00C71371 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C633316A2948B24A00C71371 /* Extensions.swift */; };
 		C633316D294A0B9600C71371 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C633316C294A0B9600C71371 /* GoogleService-Info.plist */; };
+		C6514569296C4FFD00246418 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6514568296C4FFD00246418 /* HomeController.swift */; };
+		C651456B296C54C900246418 /* HomePostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C651456A296C54C900246418 /* HomePostCell.swift */; };
 		C68D507A294F4BD200245E60 /* UserProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68D5079294F4BD200245E60 /* UserProfileHeader.swift */; };
 		C696FED729607D82007AB49D /* LoginFlowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C696FED629607D82007AB49D /* LoginFlowTests.swift */; };
 		C69E327F29602EBA0034CDAC /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = C69E327E29602EBA0034CDAC /* FirebaseStorage */; };
@@ -58,6 +60,8 @@
 /* Begin PBXFileReference section */
 		C633316A2948B24A00C71371 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		C633316C294A0B9600C71371 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C6514568296C4FFD00246418 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
+		C651456A296C54C900246418 /* HomePostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePostCell.swift; sourceTree = "<group>"; };
 		C68D5079294F4BD200245E60 /* UserProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileHeader.swift; sourceTree = "<group>"; };
 		C696FED629607D82007AB49D /* LoginFlowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFlowTests.swift; sourceTree = "<group>"; };
 		C6E8563D29476A3900D1C3ED /* Build_Instagram_With_Firebase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Build_Instagram_With_Firebase.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -125,6 +129,15 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		C6514567296C4FDC00246418 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				C6514568296C4FFD00246418 /* HomeController.swift */,
+				C651456A296C54C900246418 /* HomePostCell.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		C68D5078294F4BBB00245E60 /* UserProfile */ = {
 			isa = PBXGroup;
 			children = (
@@ -166,6 +179,7 @@
 		C6E8563F29476A3900D1C3ED /* Build_Instagram_With_Firebase */ = {
 			isa = PBXGroup;
 			children = (
+				C6514567296C4FDC00246418 /* Home */,
 				F59F1722295E917F0013D3BD /* Models */,
 				F59F1719295A83A60013D3BD /* AddPhoto */,
 				F59F1716295973D40013D3BD /* Login */,
@@ -384,12 +398,14 @@
 			files = (
 				F59F171F295C7E860013D3BD /* PhotoSelectorHeader.swift in Sources */,
 				F59F171D295C46510013D3BD /* PhotoSelectorCell.swift in Sources */,
+				C651456B296C54C900246418 /* HomePostCell.swift in Sources */,
 				C633316B2948B24A00C71371 /* Extensions.swift in Sources */,
 				C6E8564529476A3900D1C3ED /* SignUpController.swift in Sources */,
 				F5D19293294C2107002BD936 /* MainTabBarController.swift in Sources */,
 				F59F1726295EB8910013D3BD /* UserProfilePhotoCell.swift in Sources */,
 				F59F1724295E91A80013D3BD /* Post.swift in Sources */,
 				C68D507A294F4BD200245E60 /* UserProfileHeader.swift in Sources */,
+				C6514569296C4FFD00246418 /* HomeController.swift in Sources */,
 				F59F1718295973FB0013D3BD /* LoginController.swift in Sources */,
 				F59F1728295EE98D0013D3BD /* CustomImageView.swift in Sources */,
 				C6E8564129476A3900D1C3ED /* AppDelegate.swift in Sources */,

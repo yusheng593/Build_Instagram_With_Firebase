@@ -12,7 +12,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
     
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         let index = viewControllers?.firstIndex(of: viewController)
-        if index == 3 {
+        if index == 1 {
             let layout = UICollectionViewFlowLayout()
             let photoSelectorController = PhotoSelectorController(collectionViewLayout: layout)
             let navController = UINavigationController(rootViewController: photoSelectorController)
@@ -27,7 +27,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        #if DEBUG
+#if DEBUG
         DispatchQueue.main.async {
             if ProcessInfo.processInfo.arguments.contains("toTestSignUpController") {
                 let signUpController = SignUpController()
@@ -46,7 +46,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
             }
             
         }
-        #endif
+#endif
         
         self.delegate = self
         
@@ -65,14 +65,15 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
     }
     
     func setupViewControllers() {
+        let layout = UICollectionViewFlowLayout()
         
-        let homeNavController = templateNavController(unselectedImage: "home_unselected", selectedImage: "home_selected")
-        let searchNavController = templateNavController(unselectedImage: "search_unselected", selectedImage: "search_selected")
+        let homeNavController = templateNavController(unselectedImage: "home_unselected", selectedImage: "home_selected", rootViewController: HomeController(collectionViewLayout: layout))
+//        let searchNavController = templateNavController(unselectedImage: "search_unselected", selectedImage: "search_selected")
         let plusNavController = templateNavController(unselectedImage: "plus_unselected", selectedImage: "plus_unselected")
-        let likeNavController = templateNavController(unselectedImage: "like_unselected", selectedImage: "like_selected")
+//        let likeNavController = templateNavController(unselectedImage: "like_unselected", selectedImage: "like_selected")
         
         // user profile
-        let layout = UICollectionViewFlowLayout()
+        
         let userProfileController = UserProfileController(collectionViewLayout: layout)
         let userProfileNavController = UINavigationController(rootViewController: userProfileController)
         
@@ -80,7 +81,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         userProfileNavController.tabBarItem.selectedImage = UIImage(named: "profile_selected")
         tabBar.tintColor = .label
         
-        viewControllers = [userProfileNavController, homeNavController, searchNavController, plusNavController, likeNavController]
+        viewControllers = [homeNavController, plusNavController, userProfileNavController]
         
         //modify tab bar item insets
         guard let items = tabBar.items else { return }
@@ -89,8 +90,8 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         }
     }
     
-    fileprivate func templateNavController(unselectedImage: String, selectedImage: String) -> UINavigationController {
-        let viewController = UIViewController()
+    fileprivate func templateNavController(unselectedImage: String, selectedImage: String, rootViewController: UIViewController = UIViewController()) -> UINavigationController {
+        let viewController = rootViewController
         let navController = UINavigationController(rootViewController: viewController)
         navController.tabBarItem.image = UIImage(named: unselectedImage)
         navController.tabBarItem.selectedImage = UIImage(named: selectedImage)
