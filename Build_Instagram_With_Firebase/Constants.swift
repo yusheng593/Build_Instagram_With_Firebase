@@ -14,6 +14,9 @@ struct K {
     static let usernamePlaceholder = "Username"
     static let passwordPlaceholder = "Password"
     static let signButtonTitle = "Sign Up"
+    // Cell & Header
+    static let cellId = "cellId"
+    static let headerId = "headerId"
 }
 
 struct TestIdentifier {

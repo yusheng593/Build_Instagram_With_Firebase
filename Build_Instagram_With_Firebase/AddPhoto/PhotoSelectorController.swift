@@ -10,16 +10,13 @@ import Photos
 
 class PhotoSelectorController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    let cellId = "cellId"
-    let headerId = "headerId"
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         collectionView.backgroundColor = .systemBackground
         
-        collectionView.register(PhotoSelectorCell.self, forCellWithReuseIdentifier: cellId)
-        collectionView.register(PhotoSelectorHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerId)
+        collectionView.register(PhotoSelectorCell.self, forCellWithReuseIdentifier: K.cellId)
+        collectionView.register(PhotoSelectorHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: K.headerId)
         
         setupNavigationButtons()
         
@@ -91,7 +88,7 @@ class PhotoSelectorController: UICollectionViewController, UICollectionViewDeleg
     var header: PhotoSelectorHeader?
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! PhotoSelectorHeader
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: K.headerId, for: indexPath) as! PhotoSelectorHeader
         
         self.header = header
         
@@ -131,7 +128,7 @@ class PhotoSelectorController: UICollectionViewController, UICollectionViewDeleg
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! PhotoSelectorCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: K.cellId, for: indexPath) as! PhotoSelectorCell
         cell.photoImageView.image = images[indexPath.item]
         return cell
     }

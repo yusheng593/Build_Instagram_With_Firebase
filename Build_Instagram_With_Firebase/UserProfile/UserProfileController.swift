@@ -10,8 +10,6 @@ import Firebase
 
 class UserProfileController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    let cellId = "cellId"
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.backgroundColor = .systemBackground
@@ -20,8 +18,8 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         
         fetchUser()
         
-        collectionView.register(UserProfileHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headerId")
-        collectionView.register(UserProfilePhotoCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView.register(UserProfileHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: K.headerId)
+        collectionView.register(UserProfilePhotoCell.self, forCellWithReuseIdentifier: K.cellId)
         
         setLogOutButton()
         
@@ -77,7 +75,7 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! UserProfilePhotoCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: K.cellId, for: indexPath) as! UserProfilePhotoCell
         cell.post = self.posts[indexPath.item]
         return cell
     }
@@ -96,7 +94,7 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "headerId", for: indexPath) as! UserProfileHeader
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: K.headerId, for: indexPath) as! UserProfileHeader
         header.user = self.user
         header.posts = posts.count
         return header

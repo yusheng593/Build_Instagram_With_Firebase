@@ -10,13 +10,11 @@ import Firebase
 
 class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    private let cellId = "cellId"
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
         
-        collectionView.register(HomePostCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView.register(HomePostCell.self, forCellWithReuseIdentifier: K.cellId)
         
         fetchOrderedPosts()
     }
@@ -55,7 +53,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! HomePostCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: K.cellId, for: indexPath) as! HomePostCell
         
         cell.post = self.posts[indexPath.item]
         
