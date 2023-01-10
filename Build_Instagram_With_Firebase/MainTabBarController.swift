@@ -65,16 +65,15 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
     }
     
     func setupViewControllers() {
-        let layout = UICollectionViewFlowLayout()
         
-        let homeNavController = templateNavController(unselectedImage: "home_unselected", selectedImage: "home_selected", rootViewController: HomeController(collectionViewLayout: layout))
+        let homeNavController = templateNavController(unselectedImage: "home_unselected", selectedImage: "home_selected", rootViewController: HomeController(collectionViewLayout: UICollectionViewFlowLayout()))
 //        let searchNavController = templateNavController(unselectedImage: "search_unselected", selectedImage: "search_selected")
         let plusNavController = templateNavController(unselectedImage: "plus_unselected", selectedImage: "plus_unselected")
 //        let likeNavController = templateNavController(unselectedImage: "like_unselected", selectedImage: "like_selected")
         
         // user profile
         
-        let userProfileController = UserProfileController(collectionViewLayout: layout)
+        let userProfileController = UserProfileController(collectionViewLayout: UICollectionViewFlowLayout())
         let userProfileNavController = UINavigationController(rootViewController: userProfileController)
         
         userProfileNavController.tabBarItem.image = UIImage(named: "profile_unselected")
