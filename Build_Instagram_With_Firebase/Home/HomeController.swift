@@ -32,25 +32,27 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
-        let userRef = Database.database().reference().child("user").child(uid)
-        userRef.observeSingleEvent(of: .value) { snapshot in
-            let value = snapshot.value as? NSDictionary
-            let user = User(username: value?["username"] as? String ?? "", profileImageUrl: value?["ProfileImageUrl"] as? String ?? "")
-            
-            let ref = Database.database().reference().child("posts").child(uid)
-            ref.queryOrdered(byChild: "creationDate").observe(.childAdded) { snapshot in
-                guard let dictionary = snapshot.value as? [String: Any] else { return }
-                let post = Post(dictionary: dictionary, user: user)
-                
+        Database.fetchUserWithUID(uid: uid) { user in
+//            self.fetchPostsWithUser(user: user)
+            Database.fetchPostsWithUser(user: user) { post in
                 self.posts.insert(post, at: 0)
-                
                 self.collectionView.reloadData()
             }
         }
         
-        
-        
     }
+    
+    /*fileprivate func fetchPostsWithUser(user: User) {
+        let ref = Database.database().reference().child("posts").child(user.uid)
+        ref.queryOrdered(byChild: "creationDate").observe(.childAdded) { snapshot in
+            guard let dictionary = snapshot.value as? [String: Any] else { return }
+            let post = Post(dictionary: dictionary, user: user)
+
+            self.posts.insert(post, at: 0)
+
+            self.collectionView.reloadData()
+        }
+    }*/
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         

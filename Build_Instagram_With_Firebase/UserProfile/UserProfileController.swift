@@ -29,21 +29,21 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         
     }
     
-    fileprivate func fetchOrderedPosts() {
+    /*fileprivate func fetchOrderedPosts() {
         guard let uid = Auth.auth().currentUser?.uid else { return }
-        
+
         let ref = Database.database().reference().child("posts").child(uid)
-        
+
         ref.queryOrdered(byChild: "creationDate").observe(.childAdded) { snapshot in
             guard let dictionary = snapshot.value as? [String: Any] else { return }
             guard let user = self.user else { return }
             let post = Post(dictionary: dictionary, user: user)
             self.posts.insert(post, at: 0)
-            
+
             self.collectionView.reloadData()
         }
-        
-    }
+
+    }*/
     
     fileprivate func setLogOutButton() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "gear")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleLogOut))
@@ -106,21 +106,18 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
     }
     
     fileprivate func fetchUserAndPosts() {
-        var ref: DatabaseReference!
-        ref = Database.database().reference()
         
-        guard let userID = Auth.auth().currentUser?.uid else { return }
-        ref.child("user").child(userID).observeSingleEvent(of: .value, with: { snapshot in
-            // Get user value
-            let value = snapshot.value as? NSDictionary
-            self.user = User(username: value?["username"] as? String ?? "", profileImageUrl: value?["ProfileImageUrl"] as? String ?? "")
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        Database.fetchUserWithUID(uid: uid) { user in
+            self.user = user
             self.navigationItem.title = self.user?.username
             self.collectionView.reloadData()
-            
-            self.fetchOrderedPosts()
-            
-        }) { error in
-          print(error.localizedDescription)
+//            self.fetchOrderedPosts()
+            Database.fetchPostsWithUser(user: user) { post in
+                self.posts.insert(post, at: 0)
+                self.collectionView.reloadData()
+            }
         }
     }
 }
