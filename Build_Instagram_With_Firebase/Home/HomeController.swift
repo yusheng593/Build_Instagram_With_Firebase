@@ -31,16 +31,24 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     fileprivate func fetchOrderedPosts() {
         
         guard let uid = Auth.auth().currentUser?.uid else { return }
-        let ref = Database.database().reference().child("posts").child(uid)
         
-        ref.queryOrdered(byChild: "creationDate").observe(.childAdded) { snapshot in
-            guard let dictionary = snapshot.value as? [String: Any] else { return }
+        let userRef = Database.database().reference().child("user").child(uid)
+        userRef.observeSingleEvent(of: .value) { snapshot in
+            let value = snapshot.value as? NSDictionary
+            let user = User(username: value?["username"] as? String ?? "", profileImageUrl: value?["ProfileImageUrl"] as? String ?? "")
             
-            let post = Post(dictionary: dictionary)
-            self.posts.append(post)
-            
-            self.collectionView.reloadData()
+            let ref = Database.database().reference().child("posts").child(uid)
+            ref.queryOrdered(byChild: "creationDate").observe(.childAdded) { snapshot in
+                guard let dictionary = snapshot.value as? [String: Any] else { return }
+                let post = Post(dictionary: dictionary, user: user)
+                
+                self.posts.insert(post, at: 0)
+                
+                self.collectionView.reloadData()
+            }
         }
+        
+        
         
     }
     

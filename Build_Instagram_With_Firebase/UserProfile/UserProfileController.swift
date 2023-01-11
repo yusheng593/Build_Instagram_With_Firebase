@@ -10,34 +10,35 @@ import Firebase
 
 class UserProfileController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
+    var user: User?
+    var posts = [Post]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.backgroundColor = .systemBackground
         navigationController?.tabBarController?.tabBar.layer.borderColor = UIColor.systemGray6.cgColor
         navigationController?.tabBarController?.tabBar.layer.borderWidth = 1
         
-        fetchUser()
+        fetchUserAndPosts()
         
         collectionView.register(UserProfileHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: K.headerId)
         collectionView.register(UserProfilePhotoCell.self, forCellWithReuseIdentifier: K.cellId)
         
         setLogOutButton()
         
-        fetchOrderedPosts()
+        
     }
     
-    var posts = [Post]()
-    
     fileprivate func fetchOrderedPosts() {
-        
         guard let uid = Auth.auth().currentUser?.uid else { return }
+        
         let ref = Database.database().reference().child("posts").child(uid)
         
         ref.queryOrdered(byChild: "creationDate").observe(.childAdded) { snapshot in
             guard let dictionary = snapshot.value as? [String: Any] else { return }
-            
-            let post = Post(dictionary: dictionary)
-            self.posts.append(post)
+            guard let user = self.user else { return }
+            let post = Post(dictionary: dictionary, user: user)
+            self.posts.insert(post, at: 0)
             
             self.collectionView.reloadData()
         }
@@ -104,8 +105,7 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         return CGSize(width: self.view.frame.width, height: 200)
     }
     
-    var user: User?
-    fileprivate func fetchUser() {
+    fileprivate func fetchUserAndPosts() {
         var ref: DatabaseReference!
         ref = Database.database().reference()
         
@@ -117,18 +117,10 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
             self.navigationItem.title = self.user?.username
             self.collectionView.reloadData()
             
+            self.fetchOrderedPosts()
+            
         }) { error in
           print(error.localizedDescription)
         }
-    }
-}
-
-struct User {
-    let username: String
-    let profileImageUrl: String
-    
-    init(username: String, profileImageUrl: String) {
-        self.username = username
-        self.profileImageUrl = profileImageUrl
     }
 }
