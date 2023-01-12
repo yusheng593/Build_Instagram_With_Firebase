@@ -12,7 +12,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
     
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         let index = viewControllers?.firstIndex(of: viewController)
-        if index == 1 {
+        if index == 2 {
             let layout = UICollectionViewFlowLayout()
             let photoSelectorController = PhotoSelectorController(collectionViewLayout: layout)
             let navController = UINavigationController(rootViewController: photoSelectorController)
@@ -67,9 +67,9 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
     func setupViewControllers() {
         
         let homeNavController = templateNavController(unselectedImage: "home_unselected", selectedImage: "home_selected", rootViewController: HomeController(collectionViewLayout: UICollectionViewFlowLayout()))
-//        let searchNavController = templateNavController(unselectedImage: "search_unselected", selectedImage: "search_selected")
+        let searchNavController = templateNavController(unselectedImage: "search_unselected", selectedImage: "search_selected", rootViewController: UserSearchController(collectionViewLayout: UICollectionViewFlowLayout()))
         let plusNavController = templateNavController(unselectedImage: "plus_unselected", selectedImage: "plus_unselected")
-//        let likeNavController = templateNavController(unselectedImage: "like_unselected", selectedImage: "like_selected")
+        //        let likeNavController = templateNavController(unselectedImage: "like_unselected", selectedImage: "like_selected")
         
         // user profile
         
@@ -80,7 +80,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         userProfileNavController.tabBarItem.selectedImage = UIImage(named: "profile_selected")
         tabBar.tintColor = .label
         
-        viewControllers = [homeNavController, plusNavController, userProfileNavController]
+        viewControllers = [searchNavController, homeNavController, plusNavController, userProfileNavController]
         
         //modify tab bar item insets
         guard let items = tabBar.items else { return }

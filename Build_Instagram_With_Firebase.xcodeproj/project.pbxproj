@@ -27,6 +27,8 @@
 		C6E8566429476A3C00D1C3ED /* Build_Instagram_With_FirebaseUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E8566329476A3C00D1C3ED /* Build_Instagram_With_FirebaseUITestsLaunchTests.swift */; };
 		F580366C296E603700076CD1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F580366B296E603700076CD1 /* User.swift */; };
 		F580366E296EAB3000076CD1 /* FirebaseUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F580366D296EAB3000076CD1 /* FirebaseUtils.swift */; };
+		F5803671296FE00E00076CD1 /* UserSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5803670296FE00E00076CD1 /* UserSearchController.swift */; };
+		F5803673296FE95000076CD1 /* UserSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5803672296FE95000076CD1 /* UserSearchCell.swift */; };
 		F59F1718295973FB0013D3BD /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59F1717295973FB0013D3BD /* LoginController.swift */; };
 		F59F171B295A83BC0013D3BD /* PhotoSelectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59F171A295A83BB0013D3BD /* PhotoSelectorController.swift */; };
 		F59F171D295C46510013D3BD /* PhotoSelectorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59F171C295C46510013D3BD /* PhotoSelectorCell.swift */; };
@@ -79,6 +81,8 @@
 		C6E8566329476A3C00D1C3ED /* Build_Instagram_With_FirebaseUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Build_Instagram_With_FirebaseUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		F580366B296E603700076CD1 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F580366D296EAB3000076CD1 /* FirebaseUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUtils.swift; sourceTree = "<group>"; };
+		F5803670296FE00E00076CD1 /* UserSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchController.swift; sourceTree = "<group>"; };
+		F5803672296FE95000076CD1 /* UserSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchCell.swift; sourceTree = "<group>"; };
 		F59F1717295973FB0013D3BD /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		F59F171A295A83BB0013D3BD /* PhotoSelectorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectorController.swift; sourceTree = "<group>"; };
 		F59F171C295C46510013D3BD /* PhotoSelectorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectorCell.swift; sourceTree = "<group>"; };
@@ -184,6 +188,7 @@
 		C6E8563F29476A3900D1C3ED /* Build_Instagram_With_Firebase */ = {
 			isa = PBXGroup;
 			children = (
+				F580366F296FDFD900076CD1 /* Search */,
 				C6514567296C4FDC00246418 /* Home */,
 				F59F1722295E917F0013D3BD /* Models */,
 				F59F1719295A83A60013D3BD /* AddPhoto */,
@@ -219,6 +224,15 @@
 				C696FED629607D82007AB49D /* LoginFlowTests.swift */,
 			);
 			path = Build_Instagram_With_FirebaseUITests;
+			sourceTree = "<group>";
+		};
+		F580366F296FDFD900076CD1 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				F5803670296FE00E00076CD1 /* UserSearchController.swift */,
+				F5803672296FE95000076CD1 /* UserSearchCell.swift */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 		F59F1716295973D40013D3BD /* Login */ = {
@@ -409,6 +423,8 @@
 				C6E8564529476A3900D1C3ED /* SignUpController.swift in Sources */,
 				F5D19293294C2107002BD936 /* MainTabBarController.swift in Sources */,
 				F59F1726295EB8910013D3BD /* UserProfilePhotoCell.swift in Sources */,
+				F5803671296FE00E00076CD1 /* UserSearchController.swift in Sources */,
+				F5803673296FE95000076CD1 /* UserSearchCell.swift in Sources */,
 				F59F1724295E91A80013D3BD /* Post.swift in Sources */,
 				C68D507A294F4BD200245E60 /* UserProfileHeader.swift in Sources */,
 				C6514569296C4FFD00246418 /* HomeController.swift in Sources */,
