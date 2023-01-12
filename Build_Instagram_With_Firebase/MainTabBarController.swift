@@ -80,8 +80,10 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         userProfileNavController.tabBarItem.selectedImage = UIImage(named: "profile_selected")
         tabBar.tintColor = .label
         
-        viewControllers = [searchNavController, homeNavController, plusNavController, userProfileNavController]
-        
+        viewControllers = [homeNavController, searchNavController, plusNavController, userProfileNavController]
+#if DEBUG
+        self.selectedIndex = 1
+#endif
         //modify tab bar item insets
         guard let items = tabBar.items else { return }
         for item in items {
