@@ -12,6 +12,8 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
     
     var user: User?
     var posts = [Post]()
+    // from UserSearchController
+    var userId: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -107,7 +109,7 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
     
     fileprivate func fetchUserAndPosts() {
         
-        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let uid = self.userId ?? Auth.auth().currentUser?.uid ?? ""
         
         Database.fetchUserWithUID(uid: uid) { user in
             self.user = user
