@@ -36,7 +36,7 @@ class SharePhotoController: UIViewController {
         
         let filename = NSUUID().uuidString
         
-        let storageRef = Storage.storage().reference().child("posts").child(filename)
+        let storageRef = Storage.storage().reference().child(Child.posts).child(filename)
         storageRef.putData(uploadData) { metadata, error in
             if let error = error {
                 self.navigationItem.rightBarButtonItem?.isEnabled = true
@@ -64,7 +64,7 @@ class SharePhotoController: UIViewController {
         guard let caption = textView.text else { return }
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
-        let userPostRef = Database.database().reference().child("posts").child(uid)
+        let userPostRef = Database.database().reference().child(Child.posts).child(uid)
         let ref = userPostRef.childByAutoId()
         
         let values = ["imageUrl": imageUrl, "caption": caption, "imageWidth": postImage.size.width, "imageHeight": postImage.size.height, "creationDate": Date().timeIntervalSince1970] as [String: Any]

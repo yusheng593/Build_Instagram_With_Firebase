@@ -94,13 +94,13 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate & UINa
             let filename = NSUUID().uuidString
             let storage = Storage.storage()
             let storageRef = storage.reference()
-            storageRef.child("profile_images").child(filename).putData(uploadData) { metadata, error in
+            storageRef.child(Child.profile_images).child(filename).putData(uploadData) { metadata, error in
                 
                 if let error = error {
                     print(error.localizedDescription)
                 }
                 // 3.取得頭貼連結
-                let ref = storageRef.child("profile_images").child(filename)
+                let ref = storageRef.child(Child.profile_images).child(filename)
                 ref.downloadURL { downloadURL, error in
                     if let error = error {
                         print(error.localizedDescription)
@@ -114,7 +114,7 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate & UINa
                     var ref: DatabaseReference!
                     ref = Database.database().reference()
                     
-                    ref.child("user").updateChildValues(values) { error, reference in
+                    ref.child(Child.user).updateChildValues(values) { error, reference in
                         if let error = error {
                             print(error.localizedDescription )
                             return

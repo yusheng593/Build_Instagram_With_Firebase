@@ -34,7 +34,7 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
     /*fileprivate func fetchOrderedPosts() {
         guard let uid = Auth.auth().currentUser?.uid else { return }
 
-        let ref = Database.database().reference().child("posts").child(uid)
+        let ref = Database.database().reference().child(Child.posts).child(uid)
 
         ref.queryOrdered(byChild: "creationDate").observe(.childAdded) { snapshot in
             guard let dictionary = snapshot.value as? [String: Any] else { return }

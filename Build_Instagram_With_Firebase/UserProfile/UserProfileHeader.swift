@@ -33,7 +33,7 @@ class UserProfileHeader: UICollectionViewCell {
         guard let userId = user?.uid else { return }
         
         if currentLoggedInUserId != userId {
-            Database.database().reference().child("following").child(currentLoggedInUserId).child(userId).observeSingleEvent(of: .value) { snapshot in
+            Database.database().reference().child(Child.following).child(currentLoggedInUserId).child(userId).observeSingleEvent(of: .value) { snapshot in
                 if let isFollowing = snapshot.value as? Int, isFollowing == 1 {
                     self.editProfileFollowButton.setTitle("追蹤中", for: .normal)
                 } else {
@@ -49,7 +49,7 @@ class UserProfileHeader: UICollectionViewCell {
         
         if editProfileFollowButton.titleLabel?.text == "追蹤中" {
             // 解除追蹤
-            Database.database().reference().child("following").child(currentLoggedInUserId).child(userId).removeValue { error, reference in
+            Database.database().reference().child(Child.following).child(currentLoggedInUserId).child(userId).removeValue { error, reference in
                 if let err = error {
                     print("解除追蹤失敗",err.localizedDescription)
                     return
@@ -61,7 +61,7 @@ class UserProfileHeader: UICollectionViewCell {
             
         } else {
             // 追蹤
-            let ref = Database.database().reference().child("following").child(currentLoggedInUserId)
+            let ref = Database.database().reference().child(Child.following).child(currentLoggedInUserId)
             let values = [userId: 1]
             ref.updateChildValues(values) { error, reference in
                 if let err = error {

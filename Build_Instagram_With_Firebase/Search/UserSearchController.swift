@@ -69,7 +69,7 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
     var users = [User]()
     
     fileprivate func ferchAllUsers() {
-        let ref = Database.database().reference().child("user")
+        let ref = Database.database().reference().child(Child.user)
         ref.observeSingleEvent(of: .value) { snapshot in
             guard let dictionaries = snapshot.value as? [String: Any] else { return }
             

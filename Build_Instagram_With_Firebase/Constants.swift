@@ -29,5 +29,12 @@ struct TestIdentifier {
     static let loginButton = "loginButton"
     static let alreadyHaveAccountButton = "alreadyHaveAccountButton"
     static let dontHaveAccountButton = "dontHaveAccountButton"
-    
+}
+
+struct Child {
+    // Firebase
+    static let user = "user"
+    static let posts = "posts"
+    static let profile_images = "profile_images"
+    static let following = "following"
 }

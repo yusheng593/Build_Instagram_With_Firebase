@@ -43,7 +43,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     /*fileprivate func fetchPostsWithUser(user: User) {
-        let ref = Database.database().reference().child("posts").child(user.uid)
+        let ref = Database.database().reference().child(Child.posts).child(user.uid)
         ref.queryOrdered(byChild: "creationDate").observe(.childAdded) { snapshot in
             guard let dictionary = snapshot.value as? [String: Any] else { return }
             let post = Post(dictionary: dictionary, user: user)
