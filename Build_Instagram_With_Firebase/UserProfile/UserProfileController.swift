@@ -54,7 +54,7 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
     @objc func handleLogOut() {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
-        alertController.addAction(UIAlertAction(title: "Log Out", style: .destructive, handler: { _ in
+        alertController.addAction(UIAlertAction(title: "登出", style: .destructive, handler: { _ in
             let firebaseAuth = Auth.auth()
             do {
               try firebaseAuth.signOut()
@@ -68,7 +68,7 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
             }
         }))
         
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        alertController.addAction(UIAlertAction(title: "取消", style: .cancel))
         
         present(alertController, animated: true)
     }
