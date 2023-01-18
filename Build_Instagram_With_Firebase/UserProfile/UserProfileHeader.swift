@@ -23,7 +23,64 @@ class UserProfileHeader: UICollectionViewCell {
             guard let profileImageUrl = user?.profileImageUrl else { return }
             profileImageView.loadImage(urlString: profileImageUrl)
             self.username.text = user?.username
+            
+            setupEditFollowButton()
         }
+    }
+    
+    fileprivate func setupEditFollowButton() {
+        guard let currentLoggedInUserId = Auth.auth().currentUser?.uid else { return }
+        guard let userId = user?.uid else { return }
+        
+        if currentLoggedInUserId != userId {
+            Database.database().reference().child("following").child(currentLoggedInUserId).child(userId).observeSingleEvent(of: .value) { snapshot in
+                if let isFollowing = snapshot.value as? Int, isFollowing == 1 {
+                    self.editProfileFollowButton.setTitle("追蹤中", for: .normal)
+                } else {
+                    self.setupFollowStyle()
+                }
+            }
+        }
+    }
+    
+    @objc func handleEditProfileOrFollow() {
+        guard let currentLoggedInUserId = Auth.auth().currentUser?.uid else { return }
+        guard let userId = user?.uid else { return }
+        
+        if editProfileFollowButton.titleLabel?.text == "追蹤中" {
+            // 解除追蹤
+            Database.database().reference().child("following").child(currentLoggedInUserId).child(userId).removeValue { error, reference in
+                if let err = error {
+                    print("解除追蹤失敗",err.localizedDescription)
+                    return
+                }
+                print("解除追蹤成功", self.user?.username ?? "")
+                
+                self.setupFollowStyle()
+            }
+            
+        } else {
+            // 追蹤
+            let ref = Database.database().reference().child("following").child(currentLoggedInUserId)
+            let values = [userId: 1]
+            ref.updateChildValues(values) { error, reference in
+                if let err = error {
+                    print("追蹤失敗",err.localizedDescription)
+                    return
+                }
+                print("追蹤成功", self.user?.username ?? "")
+                self.editProfileFollowButton.setTitle("追蹤中", for: .normal)
+                self.editProfileFollowButton.backgroundColor = .systemBackground
+                self.editProfileFollowButton.setTitleColor(.black, for: .normal)
+            }
+        }
+    }
+    
+    func setupFollowStyle() {
+        self.editProfileFollowButton.setTitle("追蹤", for: .normal)
+        self.editProfileFollowButton.backgroundColor = UIColor.rgb(red: 17, green: 154, blue: 237)
+        self.editProfileFollowButton.setTitleColor(.white, for: .normal)
+        self.editProfileFollowButton.layer.borderColor = UIColor(white: 0, alpha: 0.2).cgColor
     }
     
     let profileImageView: CustomImageView = {
@@ -73,7 +130,7 @@ class UserProfileHeader: UICollectionViewCell {
         return label
     }()
     
-    let editProfileButton: UIButton = {
+    lazy var editProfileFollowButton: UIButton = {
         let button = UIButton()
         button.setTitle("編輯個人檔案", for: .normal)
         button.setTitleColor(.label, for: .normal)
@@ -81,6 +138,7 @@ class UserProfileHeader: UICollectionViewCell {
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor.lightGray.cgColor
         button.layer.cornerRadius = 3
+        button.addTarget(self, action: #selector(handleEditProfileOrFollow), for: .touchUpInside)
         return button
     }()
     
@@ -117,8 +175,8 @@ class UserProfileHeader: UICollectionViewCell {
         setupUserStatsView()
         setupBottomToolbar()
         
-        addSubview(editProfileButton)
-        editProfileButton.anchor(top: postsLabel.bottomAnchor, left: postsLabel.leftAnchor, bottom: nil, right: followingLabel.rightAnchor, paddingTop: 2, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 32)
+        addSubview(editProfileFollowButton)
+        editProfileFollowButton.anchor(top: postsLabel.bottomAnchor, left: postsLabel.leftAnchor, bottom: nil, right: followingLabel.rightAnchor, paddingTop: 2, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 32)
         
         
         
