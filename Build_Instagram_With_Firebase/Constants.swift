@@ -10,10 +10,11 @@ import Foundation
 struct K {
     // Sign up page
     static let uploadAvatar = "plus_photo"
-    static let emailPlaceholder = "Email"
-    static let usernamePlaceholder = "Username"
-    static let passwordPlaceholder = "Password"
-    static let signButtonTitle = "Sign Up"
+    static let emailPlaceholder = "請輸入信箱"
+    static let usernamePlaceholder = "請輸入用戶名"
+    static let passwordPlaceholder = "請輸入密碼"
+    static let signButtonTitle = "註冊"
+    static let loginButtonTitle = "登入"
     // Cell & Header
     static let cellId = "cellId"
     static let headerId = "headerId"

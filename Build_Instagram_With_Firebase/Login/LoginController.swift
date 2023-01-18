@@ -26,7 +26,7 @@ class LoginController: UIViewController {
     
     lazy var emailTextField: UITextField = {
         let tf = UITextField()
-        tf.placeholder = "Email"
+        tf.placeholder = K.emailPlaceholder
         tf.backgroundColor = UIColor(white: 0, alpha: 0.03)
         tf.borderStyle = .roundedRect
         tf.font = UIFont.systemFont(ofSize: 14)
@@ -39,7 +39,7 @@ class LoginController: UIViewController {
     
     lazy var passwordTextField: UITextField = {
         let tf = UITextField()
-        tf.placeholder = "Password"
+        tf.placeholder = K.passwordPlaceholder
         tf.isSecureTextEntry = true
         tf.backgroundColor = UIColor(white: 0, alpha: 0.03)
         tf.borderStyle = .roundedRect
@@ -65,7 +65,7 @@ class LoginController: UIViewController {
     
     lazy var loginButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Login", for: .normal)
+        button.setTitle(K.loginButtonTitle, for: .normal)
         button.backgroundColor = UIColor.rgb(red: 149, green: 204, blue: 244)
         
         button.layer.cornerRadius = 5
